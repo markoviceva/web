@@ -1,0 +1,27 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "MEAN Stack web application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markoviceva/web.git"
+  },
+  "keywords": [
+    "MEAN",
+    "Stack"
+  ],
+  "author": "Jelena Markovic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markoviceva/web/issues"
+  },
+  "homepage": "https://github.com/markoviceva/web#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.6.13"
+  }
+}
