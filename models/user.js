@@ -7,7 +7,7 @@ let emailLengthChecker = (email) => {
     if (!email){
         return false;
     } else {
-        if (email.length <5 || email.length > 50){
+        if (email.length <5 || email.length > 40){
             return false;
         } else{
             return true;
@@ -29,7 +29,7 @@ let validEmailChacker = (email) => {
 const emailValidators = [
     {
         validator: emailLengthChecker, 
-        message: 'E-mail must be at least 5 characters but no more than 30'
+        message: 'E-mail must be at least 5 characters but no more than 40'
     },
     {
         validator: validEmailChacker,
