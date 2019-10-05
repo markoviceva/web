@@ -17,7 +17,7 @@
                   <div class="line-box">
                     <div class="line"></div>
                   </div>
-                  <ul class="help-block">
+                  <ul class="help-block" style="color:#ff6666">
                     <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This field is required</li>
                     <li *ngIf = "form.controls.email.errors?.minlength && form.controls.email.dirty">Minimum characters: 5</li>
                     <li *ngIf ="form.controls.email.errors?.maxlength && form.controls.email.dirty">Maximum chatacters: 40</li>
@@ -33,7 +33,7 @@
                     <div class="line"> 
                     </div>
                   </div>
-                  <ul class="help-block">
+                  <ul class="help-block" style="color:#ff6666">
                     <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required</li>
                     <li *ngIf = "form.controls.username.errors?.minlength && form.controls.username.dirty">Minimum characters: 3</li>
                     <li *ngIf ="form.controls.username.errors?.maxlength && form.controls.username.dirty">Maximum chatacters: 20</li>
@@ -48,7 +48,7 @@
                   <div class="line-box">
                     <div class="line"></div>
                   </div>
-                  <ul class="help-block">
+                  <ul class="help-block" style="color:#ff6666">
                     <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required</li>
                     <li *ngIf = "form.controls.password.errors?.minlength && form.controls.password.dirty">Minimum characters: 8</li>
                     <li *ngIf ="form.controls.password.errors?.maxlength && form.controls.password.dirty">Maximum chatacters: 35</li>
@@ -63,7 +63,7 @@
                     <div class="line-box">
                     <div class="line"></div>
                     </div>
-                    <ul class="help-block">
+                    <ul class="help-block" style="color:#ff6666">
                       <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">This field is required</li>
                       <li *ngIf="form.errors?.matchingPasswords && form.controls.confirm.dirty">Password don't match</li>
                     </ul>

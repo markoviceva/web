@@ -19,11 +19,9 @@ body {
   
   ul li::before {
     content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-    color: #ADD8E6; /* Change the color */
     display: inline-block; /* Needed to add space between the bullet and the text */
     width: 1em; /* Also needed for space (tweak if needed) */
     margin-left: -1em; /* Also needed for space (tweak if needed) */
-    text-decoration-color: #ADD8E6
   }
   label {
     display: block;
