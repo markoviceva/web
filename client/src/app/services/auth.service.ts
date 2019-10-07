@@ -23,27 +23,25 @@ export class AuthService {
   user;
   options;
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': this.authToken
-    })
-  };
-
-
   constructor(
     private http: HttpClient
   ) { }
-/*
+
   createAuthenticationHeaders() {
     this.loadToken();
-    this.options = this.httpOptions;
+    this.options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.authToken
+      })
+    }
+    
   }
   
   loadToken(){
     this.authToken = localStorage.getItem('token');
   }
-*/
+
   registerUser(user: User): Observable<Object> {
     return this.http.post<Object>(this.domain + 'authentication/register', user)
       .pipe(
@@ -72,19 +70,23 @@ export class AuthService {
       );
   }
 
+  logout() {
+    this.authToken = null; 
+    this.user = null; 
+    localStorage.clear(); 
+  }
+
   storeUserData(token, user: User) {
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
   }
-/*
-  getProfile() {
-    this.createAuthenticationHeaders();
-    return this.http.get(this.domain + 'authentication/ptofile', this.options)
-      .pipe(
-        map(res => res)
-      );
 
-  }*/
+  getProfile(): Observable<Object> {
+    this.createAuthenticationHeaders();
+    return <Observable<Object>> <unknown>this.http.get(this.domain + 'authentication/profile', this.options)
+      .pipe(map(res => res));
+
+  }
 }
