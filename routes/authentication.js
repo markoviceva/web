@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+const config = require('../config/database');
 
 module.exports = (router) => {
 
@@ -48,41 +50,102 @@ module.exports = (router) => {
       }
     }
   });
-/*
-  router.get('checkEmail', (req, res) => {
-    if(!req.params.email){
-      res.json({ success: false, message: 'E-mail was not provided' });
-    } else {
-      User.findOne({email: req.params.email}, (err, user) => {
-        if(err){
-          res.json({ success: false, message: err });
-        } else {
-          if(user){
-            res.json({ success: false, message: 'E-mail is already taken' });
+  /*
+    router.get('checkEmail', (req, res) => {
+      if(!req.params.email){
+        res.json({ success: false, message: 'E-mail was not provided' });
+      } else {
+        User.findOne({email: req.params.email}, (err, user) => {
+          if(err){
+            res.json({ success: false, message: err });
           } else {
-            res.json({ success: false, message: 'E-mail is available' });
+            if(user){
+              res.json({ success: false, message: 'E-mail is already taken' });
+            } else {
+              res.json({ success: false, message: 'E-mail is available' });
+            }
           }
+        });
+      }
+    });
+  
+    router.get('checkUsername', (req, res) => {
+      if(!req.params.username){
+        res.json({ success: false, message: 'Username was not provided' });
+      } else {
+        User.findOne({username: req.params.username}, (err, user) => {
+          if(err){
+            res.json({ success: false, message: err });
+          } else {
+            if(user){
+              res.json({ success: false, message: 'Username is already taken' });
+            } else {
+              res.json({ success: false, message: 'Username is available' });
+            }
+          }
+        });
+      }
+    });
+  */
+
+  router.post('/login', (req, res) => {
+    if (!req.body.username) {
+      res.json({ success: false, message: 'No username was provided' }); // Return error
+    } else {
+      if (!req.body.password) {
+        res.json({ success: false, message: 'No password was provided.' }); // Return error
+      } else {
+        User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
+          if (err) {
+            res.json({ success: false, message: err }); // Return error
+          } else {
+            if (!user) {
+              res.json({ success: false, message: 'Username not found.' }); // Return error
+            } else {
+              const validPassword = user.comparePassword(req.body.password); // Compare password provided to password in database
+              // Check if password is a match
+              if (!validPassword) {
+                res.json({ success: false, message: 'Password invalid' }); // Return error
+              } else {
+                const token = jwt.sign({ userId: user._id }, config.secret, { expiresIn: '24h' });
+
+                res.json({
+                  success: true,
+                  message: 'Success!',
+                  token: token,
+                  user: {
+                    username: user.username
+                  }
+                });
+              }
+            }
+          }
+        });
+      }
+    }
+  });
+/*
+  router.use((req, res, next) => {
+    const token = req.headers['authorization'];
+
+    if (!token) {
+      res.json({ success: false, message: 'No token provided' });
+    } else {
+
+      jwt.verify(token, config.secret, (err, decoded) => {
+
+        if (err) {
+          res.json({ success: false, message: 'Token invalid: ' + err });
+        } else {
+          req.decoded = decoded;
+          next();
         }
       });
     }
   });
 
-  router.get('checkUsername', (req, res) => {
-    if(!req.params.username){
-      res.json({ success: false, message: 'Username was not provided' });
-    } else {
-      User.findOne({username: req.params.username}, (err, user) => {
-        if(err){
-          res.json({ success: false, message: err });
-        } else {
-          if(user){
-            res.json({ success: false, message: 'Username is already taken' });
-          } else {
-            res.json({ success: false, message: 'Username is available' });
-          }
-        }
-      });
-    }
+  router.get('/profile', (req, res) => {
+    res.send(req.decoded);
   });
 */
   return router;

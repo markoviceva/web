@@ -121,7 +121,7 @@ userSchema.pre('save', function (next){
 })
 
 //dekriptovanje
-userSchema.methods.comparePassword = (password) => {
+userSchema.methods.comparePassword = function (password) {
     return bcrypt.compareSync(password, this.password); //vraca true ili false
 };
 

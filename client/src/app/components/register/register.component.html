@@ -20,6 +20,9 @@
       </div>
     </div>
     <label>
+        <h2>REGISTER</h2>
+    </label>
+    <label>
       <p class="label-txt">ENTER YOUR EMAIL</p>
       <div
         [ngClass]="{'has-error': (form.controls.email.errors && form.controls.email.dirty) || (!emailValid && form.controls.email.dirty), 'has-success': !form.controls.email.errors && emailValid}">
