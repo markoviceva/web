@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { User } from '../../../../models/user';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 export interface Object {
   success: boolean;
@@ -22,10 +23,14 @@ export class AuthService {
   authToken;
   user;
   options;
+  jwtHelperService;
+  
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.jwtHelperService = new JwtHelperService();
+   }
 
   createAuthenticationHeaders() {
     this.loadToken();
@@ -89,4 +94,16 @@ export class AuthService {
       .pipe(map(res => res));
 
   }
+
+  tokenNotExpired() {
+    const token: string = localStorage.getItem('token');
+
+    return token != null && !this.jwtHelperService.isTokenExpired(token);
+  }
+
+  loggedIn() {
+    return this.tokenNotExpired();
+  }
+
+  
 }

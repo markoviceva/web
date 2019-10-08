@@ -12,7 +12,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService} from './services/auth.service';
-import { FlashMessagesModule } from 'angular2-flash-messages';
+import { NgFlashMessagesModule } from 'ng-flash-messages';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    FlashMessagesModule.forRoot()
+    NgFlashMessagesModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

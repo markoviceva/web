@@ -24,22 +24,22 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/dashboard">Dashboard</a>
+            <a *ngIf="authService.loggedIn()" class="nav-link" href="/dashboard">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/profile">Profile</a>
+            <a *ngIf="authService.loggedIn()" class="nav-link" href="/profile">Profile</a>
+          </li>
+          <li  class="nav-item">
+            <a *ngIf="authService.loggedIn()" class="nav-link" href="/blog">Blog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/blog">Blog</a>
+            <a *ngIf="!authService.loggedIn()" class="nav-link" href="/login">Log in</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Log in</a>
+            <a *ngIf="authService.loggedIn()" class="nav-link" href="#" (click)="onLogoutClick()">Log out</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" (click)="onLogoutClick()">Log out</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/register">Register</a>
+            <a *ngIf="!authService.loggedIn()" class="nav-link" href="/register">Register</a>
           </li>
         </ul>
       </div>
