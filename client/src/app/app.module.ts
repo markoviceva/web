@@ -13,6 +13,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService} from './services/auth.service';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
+import {AuthGuard} from './guards/auth.guard';
+import {NotAuthGuard} from './guards/notAuth.guard';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { NgFlashMessagesModule } from 'ng-flash-messages';
     AppRoutingModule,
     NgFlashMessagesModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard, NotAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
