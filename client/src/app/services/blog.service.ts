@@ -10,6 +10,7 @@ export interface Object {
   message: string;
   token;
   user;
+  blogs;
 }
 
 @Injectable({
@@ -44,5 +45,13 @@ export class BlogService {
         map(res => res)
       );
 
+  }
+
+  getAllBlogs(): Observable<Object> {
+    this.createAuthenticationHeaders();
+    return <Observable<Object>> <unknown> this.http.get(this.domain + 'blogs/allBlogs', this.options)
+      .pipe(
+        map(res => res)
+      );
   }
 }

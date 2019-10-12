@@ -51,37 +51,34 @@
       </form>
 
 <div *ngIf="!newPost">
-    <div class="card ">
+    <div class="card " *ngFor="let blog of blogPosts">
         <div class="card-header bg-primary">
-            Post Title
+                {{ blog.title }}
         </div>
 
         <div class="card-body">
-            Jelena
-            Jelena
-            Jelena
-            Markovic
+                {{ blog.body }}
         </div>
 
         <div class="card-footer">
-            <strong>Posted by: </strong>markoviceva
+            <strong>Posted by: </strong> {{ blog.createdBy }}
             <br />
-            <strong>Date: </strong>12. June 2018
+            <strong>Date: </strong> {{ blog.createdAt | date:'MMM dd, yyyy' }}
             <br />
-            <div>
-                <strong>Likes: </strong>12
+            <div *ngIf="username === blog.createdBy">
+                <strong>Likes: </strong> {{ blog.likes }}
                 <br />
-                <strong>Dislikes: </strong>12
+                <strong>Dislikes: </strong> {{ blog.dislikes }}
 
             </div>
 
 
-            <button type="button" name="button" class="btn btn-sm btn-info">Edit</button>
-            <button type="button" name="button" class="btn btn-sm btn-danger">Delete</button>
+            <a [routerLink]="['/edit-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
+            <a [routerLink]="['/delete-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a>
 
 
             <div class="dropdown">
-                <button type="button" class="btn btn-sm btn-success"><i class="fas fa-thumbs-up"></i>&nbsp;Likes:
+                <button type="button" class="btn btn-sm btn-success" *ngIf="username !== blog.createdBy"><i class="fas fa-thumbs-up"></i>&nbsp;Likes:
                     4</button>
                 <div class="dropdown-content">
                     <a href="#">jelena</a><br/>
@@ -93,7 +90,7 @@
             </div>
 
             <div class="dropdown">
-                <button type="button" class="btn btn-sm btn-warning"><i class="fas fa-thumbs-down"></i>&nbsp;Dislikes:
+                <button type="button" class="btn btn-sm btn-warning" *ngIf="username !== blog.createdBy"><i class="fas fa-thumbs-down"></i>&nbsp;Dislikes:
                     4</button>
                 <div class="dropdown-content">
                     <a href="#">jelena</a><br/>
@@ -105,7 +102,7 @@
             </div>
 
         </div>
-
+    
         <ul class="list-group">
             <li class="list-group-item">
                 <button type="button" name="button" class="btn btn-sm btn-outline-primary" (click)="draftComment()">Post Comment</button>
