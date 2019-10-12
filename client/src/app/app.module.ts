@@ -12,6 +12,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService} from './services/auth.service';
+import {BlogService} from './services/blog.service';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
 import {NotAuthGuard} from './guards/notAuth.guard';
@@ -35,7 +36,7 @@ import {NotAuthGuard} from './guards/notAuth.guard';
     AppRoutingModule,
     NgFlashMessagesModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, NotAuthGuard],
+  providers: [AuthService, AuthGuard, NotAuthGuard, BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,6 +22,7 @@
     "@auth0/angular-jwt": "^3.0.0",
     "angular2-flash-messages": "^3.0.1",
     "angular2-jwt": "^0.2.3",
+    "bootstrap": "^3.4.1",
     "ng-flash-messages": "^0.3.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
