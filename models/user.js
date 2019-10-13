@@ -49,7 +49,7 @@ let usernameLengthChecker = (username) => {
     }
 };
 
-let validUsername = (username) => {
+let usernameValid = (username) => {
     if(!username){
         return false;
     } else{
@@ -63,7 +63,7 @@ const usernameValidators = [{
     message: 'Username mast be at least 3 characters but no more than 20'
 },
 {
-    validator: validUsername,
+    validator: usernameValid,
     message: 'Username must not have any special characters'
 }]
 
@@ -79,7 +79,7 @@ let passwordLengthChecker = (password) => {
     }
   };
   
-  let validPassword = (password) => {
+  let passwordValid = (password) => {
     if (!password) {
       return false; 
     } else {
@@ -94,7 +94,7 @@ let passwordLengthChecker = (password) => {
       message: 'Password must be at least 8 characters but no more than 35'
     },
     {
-      validator: validPassword,
+      validator: passwordValid,
       message: 'Must have at least one uppercase, lowercase, special character, and number'
     }
   ];

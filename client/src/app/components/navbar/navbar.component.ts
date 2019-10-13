@@ -11,7 +11,7 @@ import { NgFlashMessageService } from 'ng-flash-messages';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
     private ngFlashMessagesService: NgFlashMessageService
   ) { }
