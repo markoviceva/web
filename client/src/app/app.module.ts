@@ -18,6 +18,7 @@ import { NgFlashMessagesModule } from 'ng-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
 import {NotAuthGuard} from './guards/notAuth.guard';
 import { EditBlogComponent } from './components/blog/edit-blog/edit-blog.component';
+import { DeleteBlogComponent } from './components/blog/delete-blog/delete-blog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EditBlogComponent } from './components/blog/edit-blog/edit-blog.compone
     BlogComponent,
     LoginComponent,
     RegisterComponent,
-    EditBlogComponent
+    EditBlogComponent,
+    DeleteBlogComponent
     
   ],
   imports: [

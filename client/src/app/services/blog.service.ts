@@ -70,6 +70,13 @@ export class BlogService {
       .pipe(
         map(res => res)
       );
+  }
 
+  deleteBlog(id) {
+    this.createAuthenticationHeaders();
+    return <Observable<Object>> <unknown> this.http.delete(this.domain + 'blogs/deleteBlog/' + id, this.options)
+      .pipe(
+        map(res => res)
+      );
   }
 }
