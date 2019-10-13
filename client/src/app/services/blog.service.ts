@@ -98,4 +98,16 @@ export class BlogService {
       );
     
   }
+
+  postComment(id, comment) {
+    this.createAuthenticationHeaders();
+    const blogData = {
+      id: id,
+      comment: comment
+    }
+    return <Observable<Object>> <unknown> this.http.post(this.domain + 'blogs/comment', blogData, this.options)
+      .pipe(
+        map(res => res)
+      );
+  }
 }
