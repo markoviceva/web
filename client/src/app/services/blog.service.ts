@@ -79,4 +79,23 @@ export class BlogService {
         map(res => res)
       );
   }
+
+  likeBlog(id){
+    const blogData = {id: id};
+    return <Observable<Object>> <unknown> this.http.put(this.domain + 'blogs/likeBlog', blogData, this.options)
+      .pipe(
+        map(res => res)
+      );
+
+
+  }
+
+  dislikeBlog(id){
+    const blogData = {id: id};
+    return <Observable<Object>> <unknown> this.http.put(this.domain + 'blogs/dislikeBlog', blogData, this.options)
+      .pipe(
+        map(res => res)
+      );
+    
+  }
 }

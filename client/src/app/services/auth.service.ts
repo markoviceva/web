@@ -105,5 +105,11 @@ export class AuthService {
     return this.tokenNotExpired();
   }
 
+  getPublicProfile(username){
+    this.createAuthenticationHeaders();
+    return <Observable<Object>> <unknown>this.http.get(this.domain + 'authentication/publicProfile/' + username, this.options)
+      .pipe(map(res => res));
+  }
+
   
 }
