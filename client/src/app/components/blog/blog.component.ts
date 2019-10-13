@@ -15,8 +15,8 @@ export class BlogComponent implements OnInit {
   
   messageClass;
   message;
-  newPost = false;
-  loadingBlogs = false;
+  newPost ;
+  loadingBlogs ;
   form;
   processing;
   username;

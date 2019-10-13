@@ -124,6 +124,8 @@ module.exports = (router) => {
       }
     }
   });
+
+  
   router.use((req, res, next) => {
     const token = req.headers['authorization'];
 

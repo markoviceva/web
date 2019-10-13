@@ -11,6 +11,7 @@ export interface Object {
   token;
   user;
   blogs;
+  blog;
 }
 
 @Injectable({
@@ -53,5 +54,22 @@ export class BlogService {
       .pipe(
         map(res => res)
       );
+  }
+
+  getSingleBlog(id){
+    this.createAuthenticationHeaders();
+    return <Observable<Object>> <unknown> this.http.get(this.domain + 'blogs/singleBlog/' + id, this.options)
+      .pipe(
+        map(res => res)
+      );
+  }
+
+  editBlog(blog: Blog): Observable<Object>{
+    this.createAuthenticationHeaders();
+    return <Observable<Object>> <unknown> this.http.put(this.domain + 'blogs/updateBlog', blog, this.options)
+      .pipe(
+        map(res => res)
+      );
+
   }
 }
