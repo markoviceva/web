@@ -10,11 +10,14 @@ import { NgFlashMessageService } from 'ng-flash-messages';
 })
 export class NavbarComponent implements OnInit {
 
+  
   constructor(
     public authService: AuthService,
     private router: Router,
     private ngFlashMessagesService: NgFlashMessageService
   ) { }
+
+
 
   onLogoutClick() {
     this.authService.logout(); // Logout user

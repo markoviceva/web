@@ -1,4 +1,5 @@
-<h1 class="page-header">Blog Feed</h1>
+<br />
+<h1 class="page-header text-center"><i class="fas fa-dove"></i> &nbsp;What are you thinking about&nbsp;<i class="fas fa-dove"></i> </h1>
 
 <div class="row show-hide-message" *ngIf="message && newPost">
   <div [ngClass]="messageClass">
@@ -6,14 +7,15 @@
   </div>
 </div>
 
-
-<button type="button" class="btn btn-outline-primary btn-lg" *ngIf="!newPost" (click)="newBlogForm()">New Post</button>
+<br />
+<div class="button-group text-center">
+<button type="button" class="btn btn-outline-primary btn-lg"  *ngIf="!newPost" (click)="newBlogForm()"> <i class="fas fa-pen-fancy"> </i> &nbsp;New Post</button> &nbsp;
 
 <button [disabled]="loadingBlogs" type="button" class="btn btn-outline-primary btn-lg" *ngIf="!newPost"
   (click)="reloadBlogs()">
   <i class="fas fa-sync"></i>&nbsp;&nbsp; Reload
 </button>
-
+</div>
 <br />
 <br />
 
@@ -21,7 +23,7 @@
 <form [formGroup]="form" name="blogForm" (submit)="onBlogSubmit()" *ngIf="newPost">
 
   <div class="form-group">
-    <label for="title">Title</label>
+    <label for="title"><h3 >Title</h3></label>
     <div
       [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
 
@@ -40,7 +42,7 @@
   </div>
 
   <div class="form-group">
-    <label for="body">Body</label>
+    <label for="body"><h3 >Body</h3></label>
     <div
       [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.dirty && form.controls.body.errors}">
       <textarea name="body" rows="8" cols="80" placeholder="*Body" class="form-control"
@@ -63,15 +65,15 @@
 
 <div *ngIf="!newPost">
   <div class="card " *ngFor="let blog of blogPosts">
-      <div class="card-header bg-primary">
-              {{ blog.title }}
+      <div class="card-header text-center bg-primary">
+            <h3>  {{ blog.title }} </h3>         
       </div>
 
       <div class="card-body">
               {{ blog.body }}
       </div>
 
-      <div class="card-footer">
+      <div class="card-footer text-center">
           <strong>Posted by: </strong> {{ blog.createdBy }}
           <br />
           <strong>Date: </strong> {{ blog.createdAt | date:'MMM dd, yyyy' }}
@@ -84,12 +86,12 @@
           </div>
 
 
-          <a [routerLink]="['/edit-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
-          <a [routerLink]="['/delete-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a>
+          <a [routerLink]="['/edit-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-info"> <i class="fas fa-edit"> </i> &nbsp; Edit</button></a> &nbsp;
+          <a [routerLink]="['/delete-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-danger"> <i class="fas fa-trash-alt"> </i> &nbsp; Delete</button></a>
 
 
           <div class="dropdown">
-              <button [disabled]="blog.likedBy.indexOf(username) > -1" type="button" class="btn btn-sm btn-success" *ngIf="username !== blog.createdBy" (click)="likeBlog(blog._id)"><i class="fas fa-thumbs-up"></i>&nbsp;Likes: {{blog.likes}}</button>
+              <button [disabled]="blog.likedBy.indexOf(username) > -1" type="button" class="btn btn-sm btn-success" *ngIf="username !== blog.createdBy" (click)="likeBlog(blog._id)"><i class="fas fa-thumbs-up"></i>&nbsp;Likes: {{blog.likes}}</button>&nbsp;
               <div class="dropdown-content">
                 <a [routerLink]="['/user/', liker]" *ngFor="let liker of blog.likedBy">{{ liker }} <br/> </a>
               </div>
@@ -123,14 +125,14 @@
             <textarea name="comment" rows="10" cols="30" class="form-control" formControlName="comment"></textarea>
            
             <div [ngClass]="{'has-success': !commentForm.controls.comment.errors && commentForm.controls.comment.dirty, 'has-error': commentForm.controls.comment.dirty && commentForm.controls.comment.errors}">
-              <ul class="help-block">
+              <ul class="help-block" style="color:#ff3333">
                 <li *ngIf="commentForm.controls.comment.errors?.required && commentForm.controls.comment.dirty">This field is required.</li>
                 <li *ngIf="(commentForm.controls.comment.errors?.maxlength && commentForm.controls.comment.dirty) ||(commentForm.controls.comment.errors?.minlength && commentForm.controls.comment.dirty)">Comment must be at least 1 character but no more than 200.</li>
               </ul>
             </div>
             
-            <button [disabled]="!commentForm.valid || processing" type="submit" name="button" class="btn btn-sm btn-info" (click)="postComment(blog._id)">Post</button>
-            <button [disabled]="processing" type="button" name="button" class="btn btn-sm btn-danger" (click)="cancelSubmission(blog._id)">Cancel</button>
+            <button [disabled]="!commentForm.valid || processing" type="submit" name="button" class="btn btn-sm btn-info" (click)="postComment(blog._id)"> <i class="fas fa-comment"> </i> &nbsp; Post</button>
+            <button [disabled]="processing" type="button" name="button" class="btn btn-sm btn-danger" (click)="cancelSubmission(blog._id)"> <i class="fas fa-comment-slash"> </i> &nbsp; Cancel</button>
           </form>
 
         </div>

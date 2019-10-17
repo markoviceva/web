@@ -50,7 +50,6 @@ module.exports = (router) => {
       if (err) {
         res.json({ success: false, message: err });
       } else {
-
         if (!blogs) {
           res.json({ success: false, message: 'No blogs found.' });
         } else {
@@ -59,6 +58,9 @@ module.exports = (router) => {
       }
     }).sort({ '_id': -1 });
   });
+  
+
+ 
 
   router.get('/singleBlog/:id', (req, res) => {
     if (!req.params.id) {

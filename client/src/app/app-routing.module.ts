@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component'
-import { DashboardComponent } from './components/dashboard/dashboard.component'
 import { ProfileComponent } from './components/profile/profile.component'
 import { BlogComponent} from './components/blog/blog.component'
 import { LoginComponent} from './components/login/login.component'
@@ -16,10 +15,6 @@ import {PublicProfileComponent} from './components/public-profile/public-profile
 const appRoutes: Routes = [
   { path: '',
     component: HomeComponent
-  },
-  { path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard]
   },
   { path: 'profile',
   component: ProfileComponent,

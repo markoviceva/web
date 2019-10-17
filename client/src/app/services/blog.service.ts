@@ -56,6 +56,7 @@ export class BlogService {
       );
   }
 
+
   getSingleBlog(id){
     this.createAuthenticationHeaders();
     return <Observable<Object>> <unknown> this.http.get(this.domain + 'blogs/singleBlog/' + id, this.options)
