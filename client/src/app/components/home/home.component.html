@@ -1,4 +1,20 @@
+<br />
+<h1 class="page-header text-center">Welcome to Our World</h1>
+<div *ngIf="!authService.loggedIn()" id="outPopUp" class="text-center">
+    <h3>Getting started</h3>
+    <br />
+    <a  href="/register" class="btn btn-outline-primary">Register</a>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <a  href="/login">Already have an account?<h4>Log in.</h4></a>
+</div>
 
-    <div class="bg">
-        <h1 class="text-center">Home Route</h1>
-    </div>
+<div *ngIf="authService.loggedIn()" class="text-center">
+    <p> </p>
+    <br />
+    <a href="/blog" class="btn btn-outline-success">View Posts</a>
+
+</div>
