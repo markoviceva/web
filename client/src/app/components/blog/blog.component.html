@@ -1,3 +1,4 @@
+
 <br />
 <h1 class="page-header text-center"><i class="fas fa-dove"></i> &nbsp;What are you thinking about&nbsp;<i class="fas fa-dove"></i> </h1>
 
@@ -56,16 +57,16 @@
     </div>
   </div>
 
-  <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn btn-outline-info">Go
+  <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn btn-info">Go
     Back</button>
   <button [disabled]="processing || !form.valid" type="submit" name="button"
-    class="btn btn-outline-primary">Submit</button>
+    class="btn btn-primary">Submit</button>
 
 </form>
 
 <div *ngIf="!newPost">
   <div class="card " *ngFor="let blog of blogPosts">
-      <div class="card-header text-center bg-primary">
+      <div class="card-header text-center bg-dark">
             <h3>  {{ blog.title }} </h3>         
       </div>
 
@@ -86,12 +87,12 @@
           </div>
 
 
-          <a [routerLink]="['/edit-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-info"> <i class="fas fa-edit"> </i> &nbsp; Edit</button></a> &nbsp;
-          <a [routerLink]="['/delete-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-danger"> <i class="fas fa-trash-alt"> </i> &nbsp; Delete</button></a>
+          <a [routerLink]="['/edit-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-outline-info"> <i class="fas fa-edit"> </i> &nbsp; Edit</button></a> &nbsp;
+          <a [routerLink]="['/delete-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-outline-danger"> <i class="fas fa-trash-alt"> </i> &nbsp; Delete</button></a>
 
 
           <div class="dropdown">
-              <button [disabled]="blog.likedBy.indexOf(username) > -1" type="button" class="btn btn-sm btn-success" *ngIf="username !== blog.createdBy" (click)="likeBlog(blog._id)"><i class="fas fa-thumbs-up"></i>&nbsp;Likes: {{blog.likes}}</button>&nbsp;
+              <button [disabled]="blog.likedBy.indexOf(username) > -1" type="button" class="btn btn-sm btn-outline-success" *ngIf="username !== blog.createdBy" (click)="likeBlog(blog._id)"><i class="fas fa-thumbs-up"></i>&nbsp;Likes: {{blog.likes}}</button>&nbsp;
               <div class="dropdown-content">
                 <a [routerLink]="['/user/', liker]" *ngFor="let liker of blog.likedBy">{{ liker }} <br/> </a>
               </div>
@@ -99,7 +100,7 @@
           </div>
 
           <div class="dropdown">
-              <button [disabled]="blog.dislikedBy.indexOf(username) > -1" type="button" class="btn btn-sm btn-warning" *ngIf="username !== blog.createdBy" (click)="dislikeBlog(blog._id)"><i class="fas fa-thumbs-down"></i>&nbsp;Dislikes: {{ blog.dislikes}}
+              <button [disabled]="blog.dislikedBy.indexOf(username) > -1" type="button" class="btn btn-sm btn-outline-warning" *ngIf="username !== blog.createdBy" (click)="dislikeBlog(blog._id)"><i class="fas fa-thumbs-down"></i>&nbsp;Dislikes: {{ blog.dislikes}}
                  </button>
               <div class="dropdown-content">
                 <a [routerLink]="['/user/', disliker]" *ngFor="let disliker of blog.dislikedBy">{{ disliker }} <br/> </a>
@@ -114,7 +115,7 @@
     <ul class="list-group">
       <li class="list-group-item">
         
-        <button type="button" name="button" class="btn btn-sm btn-danger" (click)="draftComment(blog._id)" [disabled]="newComment.indexOf(blog._id) > -1"><i class="fas fa-comment"> </i> &nbsp; Post Comment</button>
+        <button type="button" name="button" class="btn btn-sm btn-danger" (click)="draftComment(blog._id)" [disabled]="newComment.indexOf(blog._id) > -1"><i class="fas fa-comment"> </i> &nbsp; Post Comment</button> &nbsp;
         <br />
         <br />
         <div *ngIf="newComment.indexOf(blog._id) > -1">
@@ -157,8 +158,11 @@
           </li>
         </div>
     </ul>
+    
 
   </div>
-
+ 
 </div>
+
+
 

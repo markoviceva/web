@@ -1,28 +1,11 @@
-body {
-    background: #ADD8E6;
-    background-image: url('C:/Users/pc/Desktop/slikica.jpg');
-    background-size: auto;
-    background-repeat: unset;
-  }
+
   form {
     width: 60%;
     margin: 60px auto;
-    background:#efefef;
-    padding: 60px 120px 80px 120px;
     text-align: center;
-    -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-    box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+
   }
-  ul {
-    list-style: none; /* Remove default bullets */
-  }
-  
-  ul li::before {
-    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-    display: inline-block; /* Needed to add space between the bullet and the text */
-    width: 1em; /* Also needed for space (tweak if needed) */
-    margin-left: -1em; /* Also needed for space (tweak if needed) */
-  }
+ 
   label {
     display: block;
     position: relative;

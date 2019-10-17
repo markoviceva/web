@@ -1,57 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <title>Blog</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
+  <br />
 
-<body>
+    <h2 class="page-header text-center">Login</h2>
 
-  <form [formGroup]="form" (submit)="onLoginSubmit()">
 
     <div class="row show-hide-message">
-      <div [ngClass]="messageClass" style="color:#66a3ff">
+      <div [ngClass]="messageClass">
         {{ message }}
       </div>
     </div>
-    <label>
-        <h2>LOG IN</h2>
-    </label>
-    <label>
-      <p class="label-txt">ENTER YOUR USERNAME</p>
-      <div
-        [ngClass]="{'has-error': (form.controls.username.errors && form.controls.username.dirty) || (!usernameValid && form.controls.username.dirty), 'has-success': !form.controls.username.errors && usernameValid}">
-        <input type="text" name="username" autocomplete="off" class="input" formControlName="username" >
-        <div class="line-box">
-          <div class="line">
-          </div>
+    
+    <form [formGroup]="form" (submit)="onLoginSubmit()">
+    
+      <div class="form-group">
+        <label for="username">Username</label>
+        <div [ngClass]="{'has-error': form.controls.username.errors && form.controls.username.dirty, 'has-success': form.controls.username.valid && form.controls.username.dirty }">
+          <input class="form-control" type="text" name="username" autocomplete="off" formControlName="username" />
+          <ul class="help-block">
+            <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required.</li>
+          </ul>
         </div>
-        <ul class="help-block" style="color:#66a3ff">
-          <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required
-          </li>
-        </ul>
       </div>
-    </label>
-    <label>
-      <p class="label-txt">ENTER YOUR PASSWORD</p>
-      <div
-        [ngClass]="{'has-error': (form.controls.password.errors && form.controls.password.dirty) || (!passwordValid && form.controls.password.dirty), 'has-success': !form.controls.password.errors && passwordValid}">
-        <input type="text" name="password" class="input" autocomplete="off" formControlName="password">
-        <div class="line-box">
-          <div class="line"></div>
+    
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div [ngClass]="{'has-error': form.controls.password.errors && form.controls.password.dirty, 'has-success': form.controls.password.valid && form.controls.password.dirty }">
+          <input class="form-control" type="password" name="password" autocomplete="off" formControlName="password" />
+          <ul class="help-block">
+            <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required.</li>
+          </ul>
         </div>
-        <ul class="help-block" style="color:#66a3ff">
-          <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required
-          </li>
-        </ul>
       </div>
-    </label>
-    <button [disabled]="!form.valid || processing " type="submit">submit</button>
-  </form>
-
-</body>
+      <input [disabled]="!form.valid || processing" class="btn btn-primary" type="submit" value="Login" />
+    </form>

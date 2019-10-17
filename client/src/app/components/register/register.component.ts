@@ -121,36 +121,12 @@ export class RegisterComponent implements OnInit {
         this.messageClass = 'alert alert-success'; 
         this.message = data.message; 
         setTimeout(() => {
-          this.router.navigate(['/login']); // Redirect to login view
+          this.router.navigate(['/login']); 
         }, 2000);
       }
     });
   }
-/*
-  checkUsername(){
-    this.authService.checkUsername(this.form.get('username').value).subscribe(data => {
-      if (!data.success) {
-        this.usernameValid = false; 
-        this.usernameMessage = data.message; 
-      } else {
-        this.usernameValid = true; 
-        this.usernameMessage = data.message; 
-      }
-    });;
-  }
 
-  checkEmail(){
-    this.authService.checkEmail(this.form.get('email').value).subscribe(data => {
-      if (!data.success) {
-        this.emailValid = false; 
-        this.emailMessage = data.message; 
-      } else {
-        this.emailValid = true; 
-        this.emailMessage = data.message; 
-      }
-    });
-  }
-  */
   ngOnInit() {
   }
 
